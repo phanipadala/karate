@@ -95,5 +95,59 @@
             </plugin>
         </plugins>
     </build>
-
+    <profiles>
+        <profile>
+            <id>gatling</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>net.alchim31.maven</groupId>
+                        <artifactId>scala-maven-plugin</artifactId>
+                        <version>3.3.2</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>compile</goal>
+                                    <goal>testCompile</goal>
+                                </goals>
+                                <configuration>
+                                    <args>
+                                        <arg>-Jbackend:GenBCode</arg>
+                                        <arg>-Jdelambdafy:method</arg>
+                                        <arg>-target:jvm-1.8</arg>
+                                        <arg>-deprecation</arg>
+                                        <arg>-feature</arg>
+                                        <arg>-unchecked</arg>
+                                        <arg>-language:implicitConversions</arg>
+                                        <arg>-language:postfixOps</arg>
+                                    </args>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.gatling</groupId>
+                        <artifactId>gatling-maven-plugin</artifactId>
+                        <version>2.2.4</version>
+                        <configuration>
+                            <failOnError>false</failOnError>
+                            <resultsFolder>gatling_results</resultsFolder>
+                            <disableCompiler>true</disableCompiler>
+                            <simulationClass>DynamicScaleTest.GatlingSimulation</simulationClass>
+                            <jvmArgs>
+                                <jvmArg>-DScenarioWorkflow=PerfScenarios.json</jvmArg>
+                            </jvmArgs>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

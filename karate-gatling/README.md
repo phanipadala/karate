@@ -194,3 +194,49 @@ Scenario: fifty
 The `karate` object happens to implement the `PerfContext` interface and keeps your code simple. Note how the `myRpc` method has been implemented to accept a `Map` (auto-converted from JSON) and the `PerfContext` as arguments. 
 
 Like the built-in HTTP support, any test failures are automatically linked to the previous "perf event" captured.
+
+
+### `Scaling Gatling scenarios`
+
+Have one Gatling simulation file for the entire repo and add/modify test scenario information in json file. For different set of scenario's you can 'n' number of json files.
+
+Syntax for how to add scenario information in json file is:
+
+```
+{
+  "scenarios" : 
+  [
+   {
+    "feature" : "classpath of the feature file to be tested",
+    "scenarioName" : "input for Name of the scenario to be unique for the test",
+    "noOfUsers":" number of users to test",
+    "Duration":"duration for the test"
+    },
+    {
+    "feature" : "classpath of the feature file to be tested",
+    "scenarioName" : "input for Name of the scenario to be unique for the test",
+    "noOfUsers":" number of users to test",
+    "Duration":"duration for the test"
+    }
+   ]
+}
+```
+
+To achieve this , teams should follow these 3 steps:
+
+`1.	Add Json file under test/resources`
+- ![](https://github.com/phanipadala/karate/tree/master/karate-gatling/images/Jsonfile.png)
+
+`2.	Add Simulation File under scala dir`
+- ![](https://github.com/phanipadala/karate/tree/master/karate-gatling/images/Scenariofile.png)
+
+`3.	Add profile “gatling” to the  pom (Optional)`
+- ![](https://github.com/phanipadala/karate/tree/master/karate-gatling/images/ProfilePom.png)
+
+Command to execute:
+- `mvn clean test -Dgatling.simulationClass=DynamicScaleTest.GatlingSimulation -DScenarioWorkflow=PerfScenarios.json`
+
+Command to execute with profile `gatling`:
+- `mvn clean test -Pgatling`
+
+

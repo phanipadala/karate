@@ -1,0 +1,23 @@
+{
+  "scenarios": [
+    {
+      "feature": "mock/cats-create.feature",
+      "scenarioName": "create",
+      "noOfUsers":"10",
+      "Duration":"5"
+    },
+    {
+      "feature": "mock/cats-delete.feature@name=delete",
+      "scenarioName": "delete",
+      "noOfUsers":"5",
+      "Duration":"5"
+    },
+    {
+      "feature": "mock/custom-rpc.feature",
+      "scenarioName": "custom",
+      "noOfUsers":"10",
+      "Duration":"5"
+    }
+
+  ]
+}
