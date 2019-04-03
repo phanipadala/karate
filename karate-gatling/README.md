@@ -225,13 +225,13 @@ Syntax for how to add scenario information in json file is:
 To achieve this , teams should follow these 3 steps:
 
 `1.	Add Json file under test/resources`
-- ![](https://github.com/phanipadala/karate/tree/master/karate-gatling/images/Jsonfile.png)
+- ![](https://github.com/phanipadala/karate/blob/master/karate-gatling/images/Jsonfile.png)
 
 `2.	Add Simulation File under scala dir`
-- ![](https://github.com/phanipadala/karate/tree/master/karate-gatling/images/Scenariofile.png)
+- ![](https://github.com/phanipadala/karate/blob/master/karate-gatling/images/Scenariofile.png)
 
 `3.	Add profile “gatling” to the  pom (Optional)`
-- ![](https://github.com/phanipadala/karate/tree/master/karate-gatling/images/ProfilePom.png)
+- ![](https://github.com/phanipadala/karate/blob/master/karate-gatling/images/ProfilePom.png)
 
 Command to execute:
 - `mvn clean test -Dgatling.simulationClass=DynamicScaleTest.GatlingSimulation -DScenarioWorkflow=PerfScenarios.json`
